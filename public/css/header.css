@@ -1,0 +1,191 @@
+/* Estilos do header e menu */
+
+header {
+    background-color: var(--cor-azul-leve);
+    margin: 0;
+}
+
+header .logos {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-around;
+    padding: 0.5rem 0;
+    height: min(10vw, 4.5rem);
+    overflow: visible;
+}
+
+header .logos .brasao {
+    height: min(10vw, 4.5rem);
+    align-self: center;
+}
+
+header .logos .logo-phph {
+    height: min(17vw, 7.5rem);
+    align-self: center;
+}
+
+header nav {
+    background-color: var(--cor-azul-marinho);
+}
+
+header nav a,
+footer nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+}
+
+header nav p,
+footer nav p {
+    margin: 0;
+}
+
+header nav a:hover,
+header nav a:focus,
+footer nav a:hover,
+footer nav a:focus,
+#nav-hamburger-label:hover,
+#nav-hamburger-label:focus,
+#nav-hamburger-input:hover~#nav-hamburger-label,
+#nav-hamburger-input:focus~#nav-hamburger-label {
+    text-decoration: underline;
+}
+
+header nav .menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0 2rem;
+    height: fit-content;
+    justify-content: center;
+    opacity: 1;
+    width: 100%;
+}
+
+#nav-hamburger-input,
+#nav-hamburger-label {
+    display: none;
+}
+
+/* ── Subnavegação de Informações ── */
+
+.menu-item-with-sub {
+    position: relative;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--cor-azul-marinho);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+    border-top: 2px solid var(--cor-azul-leve);
+    min-width: 13rem;
+    z-index: 100;
+}
+
+.submenu p {
+    margin: 0;
+}
+
+.submenu a {
+    font-size: 0.95rem !important;
+    padding: 0.4rem 1.2rem !important;
+}
+
+.menu-item-with-sub:hover .submenu,
+.menu-item-with-sub:focus-within .submenu {
+    display: block;
+}
+
+/* ── Estado ativo ── */
+
+a.active {
+    font-weight: 700;
+}
+
+/* ── Menu hamburger (mobile) ── */
+
+@media only screen and (max-width: 41rem) {
+    #nav-hamburger-input {
+        display: block;
+        left: -999rem;
+        position: absolute;
+    }
+
+    #nav-hamburger-input:not(:checked)~.menu {
+        height: 0;
+        opacity: 0;
+    }
+
+    #nav-hamburger-label {
+        align-items: center;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        padding: 0.25rem 2rem 0.25rem 0.25rem;
+        user-select: none;
+    }
+
+    #nav-hamburger-input:checked~#nav-hamburger-label {
+        background-color: var(--cor-cinza-profundo);
+        text-decoration: underline;
+    }
+
+    #nav-hamburger-label .regular::after {
+        content: "≡";
+        font-size: 1.5rem;
+        position: absolute;
+        right: -1.8rem;
+        top: -0.05rem;
+        width: fit-content;
+    }
+
+    #nav-hamburger-input:checked~#nav-hamburger-label .regular::after {
+        content: "×";
+        font-size: 2rem;
+        right: -1.8rem;
+        top: 0.05rem;
+    }
+
+    header nav .menu {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: 24rem;
+        overflow: hidden;
+        transition: height 0.5s, opacity 0.25s;
+    }
+
+    header nav .menu a {
+        display: block;
+        padding-left: 10vw;
+    }
+
+    header nav .menu a:hover,
+    header nav .menu a:focus,
+    #nav-hamburger-label:hover,
+    #nav-hamburger-label:focus,
+    #nav-hamburger-input:hover~#nav-hamburger-label,
+    #nav-hamburger-input:focus~#nav-hamburger-label {
+        background-color: var(--cor-cinza-profundo);
+    }
+
+    /* Submenu mobile: inline, sem posicionamento absoluto */
+    .submenu {
+        display: block;
+        position: static;
+        box-shadow: none;
+        border-top: none;
+        border-left: 3px solid var(--cor-azul-leve);
+        min-width: unset;
+        margin-left: 10vw;
+    }
+
+    .submenu a {
+        padding-left: 1.5rem !important;
+    }
+}
